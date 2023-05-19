@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 8.0.33, for Linux (x86_64)
 --
--- Host: localhost    Database: iapetus_showroom
+-- Host: localhost    Database: showroom
 -- ------------------------------------------------------
--- Server version	8.0.33-0ubuntu0.20.04.1
+-- Server version	8.0.33-0ubuntu0.20.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,6 +24,7 @@ DROP TABLE IF EXISTS `event`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `event` (
   `eventid` char(100) NOT NULL,
+  `ieventid` int DEFAULT '0',
   `event_name` char(200) DEFAULT NULL,
   `period` char(100) DEFAULT NULL,
   `starttime` datetime DEFAULT NULL,
@@ -202,7 +203,7 @@ DROP TABLE IF EXISTS `userhistory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `userhistory` (
-  `userno` int DEFAULT NULL,
+  `userno` int NOT NULL,
   `user_name` char(200) DEFAULT NULL,
   `genre` char(100) DEFAULT NULL,
   `rank` char(16) DEFAULT NULL,
@@ -212,7 +213,8 @@ CREATE TABLE `userhistory` (
   `followers` int DEFAULT NULL,
   `fans` int DEFAULT '-1',
   `fans_lst` int DEFAULT '-1',
-  `ts` datetime DEFAULT NULL
+  `ts` datetime NOT NULL,
+  PRIMARY KEY (`userno`,`ts`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -225,4 +227,4 @@ CREATE TABLE `userhistory` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-13 16:28:12
+-- Dump completed on 2023-05-19 21:13:27
