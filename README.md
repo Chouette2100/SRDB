@@ -29,7 +29,7 @@ MySQLのインストールは以下のようにしています。
 	$ sudo mysql
 	mysql> alter user 'root'@'localhost' identified with mysql_native_password by 'xxxxxxxxxx';
 	mysql> create USER 'username'@'localhost' IDENTIFIED WITH mysql_native_password BY 'yyyyyyyy';
-	GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'username'@'localhost' WITH GRANT OPTION;
+	mysql> GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'username'@'localhost' WITH GRANT OPTION;
 	mysql> quit
     $
 ```
