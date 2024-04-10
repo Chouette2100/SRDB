@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.33, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)
 --
--- Host: localhost    Database: showroom
+-- Host: 127.0.0.1    Database: showroom
 -- ------------------------------------------------------
--- Server version	8.0.33-0ubuntu0.20.04.2
+-- Server version	8.0.36-0ubuntu0.20.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,28 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `bbslog`
+--
+
+DROP TABLE IF EXISTS `bbslog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `bbslog` (
+  `id` int NOT NULL,
+  `cnt` int DEFAULT '4',
+  `rlink` int DEFAULT '-1',
+  `title` varchar(100) DEFAULT '',
+  `name` varchar(100) DEFAULT '',
+  `body` varchar(400) DEFAULT '',
+  `ctime` datetime NOT NULL,
+  `color` varchar(20) DEFAULT 'black',
+  `ra` char(16) DEFAULT '',
+  `ua` varchar(200) DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `event`
@@ -125,7 +147,8 @@ CREATE TABLE `points` (
   `qstatus` varchar(25) DEFAULT '',
   `ptime` varchar(25) DEFAULT '',
   `qtime` varchar(25) DEFAULT '',
-  PRIMARY KEY (`eventid`,`user_id`,`ts`)
+  PRIMARY KEY (`eventid`,`user_id`,`ts`),
+  KEY `points_point` (`point`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -334,4 +357,4 @@ CREATE TABLE `wuserhistory` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-05 18:50:29
+-- Dump completed on 2024-04-10 21:29:11
