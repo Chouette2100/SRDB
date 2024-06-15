@@ -201,18 +201,25 @@ CREATE TABLE `user` (
   `user_name` char(200) DEFAULT NULL,
   `longname` char(200) DEFAULT NULL,
   `shortname` char(10) DEFAULT NULL,
-  `genre` char(100) DEFAULT NULL,
-  `rank` char(16) DEFAULT NULL,
+  `genre` char(100) DEFAULT '',
+  `genreid` int DEFAULT '-1',
+  `rank` char(16) DEFAULT '',
   `nrank` varchar(60) DEFAULT '-',
   `prank` varchar(60) DEFAULT '-',
-  `level` int DEFAULT NULL,
-  `followers` int DEFAULT NULL,
+  `irank` int DEFAULT '-1',
+  `inrank` int DEFAULT '-1',
+  `iprank` int DEFAULT '-1',
+  `itrank` int DEFAULT '-1',
+  `level` int DEFAULT '-1',
+  `followers` int DEFAULT '-1',
   `fans` int DEFAULT '-1',
+  `fanpower` int DEFAULT '-1',
   `fans_lst` int DEFAULT '-1',
+  `fanpower_lst` int DEFAULT '-1',
   `ts` datetime DEFAULT NULL,
-  `getp` char(1) DEFAULT NULL,
-  `graph` char(1) DEFAULT NULL,
-  `color` char(20) DEFAULT NULL,
+  `getp` char(1) DEFAULT '',
+  `graph` char(1) DEFAULT '',
+  `color` char(20) DEFAULT '',
   `currentevent` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`userno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -357,4 +364,4 @@ CREATE TABLE `wuserhistory` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-10 21:29:11
+-- Dump completed on 2024-06-03  8:31:11
