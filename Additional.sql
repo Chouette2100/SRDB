@@ -36,3 +36,15 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-06-15 10:03:38
+
+
+//  -- wuser のデフォルト値の設定の変更分
+//  alter table wuser alter column `rank` set default '';
+//  alter table wuser alter column `level` set default -1;
+//  alter table wuser alter column `followers` set default -1;
+//  alter table wuser alter column `getp` set default '';
+//  alter table wuser alter column `graph` set default '';
+//  alter table wuser alter column `color` set default '';
+//  alter table wuser alter column `currentevent` set default '';
+//  update wuser set getp = '', graph = '', color = '' where getp is null;
+

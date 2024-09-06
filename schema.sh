@@ -10,5 +10,5 @@
 #		127.0.0.1をMySQLサーバーのアドレスに変える。
 #
 #
-mysqldump -h 127.0.0.1 -P 9998 -u root -p --no-data showroom > CreateDB.sql
+mysqldump -h 127.0.0.1 -P 9999 -u root -p --no-data showroom > CreateDB.sql
 

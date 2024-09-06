@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.39, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: showroom
 -- ------------------------------------------------------
--- Server version	8.0.36-0ubuntu0.20.04.1
+-- Server version	8.0.39-0ubuntu0.20.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -316,18 +316,18 @@ CREATE TABLE `wuser` (
   `longname` char(200) DEFAULT NULL,
   `shortname` char(10) DEFAULT NULL,
   `genre` char(100) DEFAULT NULL,
-  `rank` char(16) DEFAULT NULL,
+  `rank` char(16) DEFAULT '',
   `nrank` varchar(60) DEFAULT '-',
   `prank` varchar(60) DEFAULT '-',
-  `level` int DEFAULT NULL,
-  `followers` int DEFAULT NULL,
+  `level` int DEFAULT '-1',
+  `followers` int DEFAULT '-1',
   `fans` int DEFAULT '-1',
   `fans_lst` int DEFAULT '-1',
   `ts` datetime DEFAULT NULL,
-  `getp` char(1) DEFAULT NULL,
-  `graph` char(1) DEFAULT NULL,
-  `color` char(20) DEFAULT NULL,
-  `currentevent` varchar(128) DEFAULT NULL,
+  `getp` char(1) DEFAULT '',
+  `graph` char(1) DEFAULT '',
+  `color` char(20) DEFAULT '',
+  `currentevent` varchar(128) DEFAULT '',
   PRIMARY KEY (`userno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -364,4 +364,4 @@ CREATE TABLE `wuserhistory` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-03  8:31:11
+-- Dump completed on 2024-08-11 23:15:55
