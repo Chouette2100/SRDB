@@ -3,6 +3,7 @@ CREATE TABLE `giftscore` (
   `userno` int NOT NULL,
   `orderno` int NOT NULL,
   `score` int NOT NULL,
+  `status' varchar(100) NOT NULL,  #  追加 2024-09-07
   `ts` datetime NOT NULL,
   PRIMARY KEY (`giftid`,`ts`,`userno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -12,6 +13,7 @@ CREATE TABLE `viewergiftscore` (
   `viewerid` int NOT NULL,
   `orderno` int NOT NULL,
   `score` int NOT NULL,
+  `status' varchar(100) NOT NULL,  #  追加 2024-09-08
   `ts` datetime NOT NULL,
   PRIMARY KEY (`giftid`,`ts`,`viewerid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -23,7 +25,6 @@ CREATE TABLE `viewer` (
   `ts` datetime NOT NULL,
   PRIMARY KEY (`viewerid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-desc viewer;
 
 CREATE TABLE `viewerhistory` (
   `viewerid` int NOT NULL,
@@ -31,4 +32,3 @@ CREATE TABLE `viewerhistory` (
   `ts` datetime NOT NULL,
   PRIMARY KEY (`viewerid`, `ts`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-desc viewerhistory;
