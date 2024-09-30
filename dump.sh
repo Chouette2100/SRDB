@@ -23,5 +23,5 @@
 #
 dumpfn=`date +%Y%m%d_%H%M`.sql
 echo "#" `date +%Y-%m-%d_%H:%M:%S` > $dumpfn
-mysqldump --single-transaction --flush-logs --source-data=2 -u root --password=xxxxxxxxx -P xxxx -h 127.0.0.1 --databases showroom >> $dumpfn
+mysqldump --single-transaction --flush-logs --source-data=2 -u root --pxxxxxxxxx -P 9999 -h 127.0.0.1 --databases showroom >> $dumpfn
 echo "#" `date +%Y-%m-%d_%H:%M:%S` >> $dumpfn
