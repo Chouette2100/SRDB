@@ -36,3 +36,7 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-06-15 10:03:38
+
+ALTER TABLE `showroom`.`giftranking` 
+ADD COLUMN `cntrblst` INT NOT NULL DEFAULT 0 AFTER `norder`;
+
