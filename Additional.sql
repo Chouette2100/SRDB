@@ -45,6 +45,6 @@ CREATE TABLE `showroom`.`giftscorecntrb` (
   `userno` INT NOT NULL,
   `viewerid` INT NOT NULL,
   `orderno` INT NOT NULL,
-  `score` INT NULL,
+  `score` INT NOT NULL,
   `ts` DATETIME NOT NULL,
   PRIMARY KEY (`giftid`, `ts`, `userno`, `viewerid`));
