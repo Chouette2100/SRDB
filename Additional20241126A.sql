@@ -1,0 +1,9 @@
+CREATE TABLE `showroom`.`accesslog` (
+  `handler` VARCHAR(45) NOT NULL,
+  `remoteaddress` CHAR(15) NOT NULL,
+  `useragent` VARCHAR(256) NOT NULL,
+  `formvalues` VARCHAR(1024) NOT NULL,
+  `eventid` VARCHAR(100) NOT NULL,
+  `roomid` INT NOT NULL,
+  `ts` DATETIME NOT NULL,
+  PRIMARY KEY (`ts`, `eventid`));
