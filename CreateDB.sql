@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.39, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.40, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: showroom
 -- ------------------------------------------------------
--- Server version	8.0.39-0ubuntu0.20.04.1
+-- Server version	8.0.40-0ubuntu0.20.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,25 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `accesslog`
+--
+
+DROP TABLE IF EXISTS `accesslog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `accesslog` (
+  `handler` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
+  `remoteaddress` char(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `useragent` varchar(256) COLLATE utf8mb4_general_ci NOT NULL,
+  `formvalues` varchar(1024) COLLATE utf8mb4_general_ci NOT NULL,
+  `eventid` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `roomid` int NOT NULL,
+  `ts` datetime NOT NULL,
+  PRIMARY KEY (`ts`,`eventid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `bbslog`
@@ -82,6 +101,8 @@ CREATE TABLE `event` (
   `target` int DEFAULT '0',
   `rstatus` varchar(20) DEFAULT '',
   `maxpoint` int DEFAULT '0',
+  `thinit` int DEFAULT '50',
+  `thdelta` int DEFAULT '5',
   `achk` int DEFAULT '0',
   `aclr` int DEFAULT '0',
   PRIMARY KEY (`eventid`)
@@ -128,6 +149,7 @@ CREATE TABLE `eventuser` (
   `color` char(20) DEFAULT NULL,
   `point` int DEFAULT NULL,
   `vld` tinyint(1) DEFAULT '1',
+  `status` int DEFAULT '0',
   PRIMARY KEY (`eventid`,`userno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -145,6 +167,7 @@ CREATE TABLE `giftranking` (
   `grname` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `grtype` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `norder` int NOT NULL,
+  `cntrblst` int NOT NULL DEFAULT '0',
   `startedat` datetime DEFAULT NULL,
   `endedat` datetime DEFAULT NULL,
   PRIMARY KEY (`campaignid`,`grid`)
@@ -167,6 +190,24 @@ CREATE TABLE `giftscore` (
   `ts` datetime NOT NULL,
   PRIMARY KEY (`giftid`,`ts`,`userno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `giftscorecntrb`
+--
+
+DROP TABLE IF EXISTS `giftscorecntrb`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `giftscorecntrb` (
+  `giftid` int NOT NULL,
+  `userno` int NOT NULL,
+  `viewerid` int NOT NULL,
+  `orderno` int NOT NULL,
+  `score` int NOT NULL,
+  `ts` datetime NOT NULL,
+  PRIMARY KEY (`giftid`,`ts`,`userno`,`viewerid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -487,6 +528,8 @@ CREATE TABLE `wevent` (
   `target` int DEFAULT '0',
   `rstatus` varchar(20) DEFAULT '',
   `maxpoint` int DEFAULT '0',
+  `thinit` int DEFAULT '50',
+  `thdelta` int DEFAULT '5',
   `achk` int DEFAULT '0',
   `aclr` int DEFAULT '0',
   PRIMARY KEY (`eventid`)
@@ -533,7 +576,9 @@ CREATE TABLE `wuser` (
   `level` int DEFAULT '-1',
   `followers` int DEFAULT '-1',
   `fans` int DEFAULT '-1',
+  `fanpower` int DEFAULT '-1',
   `fans_lst` int DEFAULT '-1',
+  `fanpower_lst` int DEFAULT '-1',
   `ts` datetime DEFAULT NULL,
   `getp` char(1) DEFAULT '',
   `graph` char(1) DEFAULT '',
@@ -575,4 +620,4 @@ CREATE TABLE `wuserhistory` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-30 22:54:33
+-- Dump completed on 2024-12-05 20:17:30
