@@ -5,5 +5,6 @@ responsetime INT NOT NULL,
 model_name VARCHAR(255) NOT NULL,
 question TEXT NOT NULL,
 maxtokens INT NOT NULL,
+temperature FLOAT NOT NULL,
 answer TEXT NOT NULL
 );
