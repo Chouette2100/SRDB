@@ -7,7 +7,7 @@ DELIMITER //
 CREATE TRIGGER set_is_bot BEFORE INSERT ON accesslog
 FOR EACH ROW
 BEGIN
-    IF NEW.useragent REGEXP 'SemrushBot|Googlebot|Bytespider|Baiduspider|bingbot|GPTBot|Amazonbot|facebookexternalhit|Twitterbot|applebot|trendictionbot|MJ12bot|serpstatbot|meta-externalagent|BacklinksExtendedBot|Discordbot|ImagesiftBot|LivelapBot|Gaisbot|Barkrowler|Slurp|YandexBot|AhrefsBot|DuckDuckBot|DotBot|Exabot|Slackbot|Mastodon|BlueSky' THEN
+    IF NEW.useragent REGEXP 'SemrushBot|Googlebot|Bytespider|Baiduspider|bingbot|GPTBot|Amazonbot|facebookexternalhit|Twitterbot|applebot|trendictionbot|MJ12bot|serpstatbot|meta-externalagent|BacklinksExtendedBot|Discordbot|ImagesiftBot|LivelapBot|Gaisbot|Barkrowler|Slurp|YandexBot|AhrefsBot|DuckDuckBot|DotBot|Exabot|Slackbot|TikTokSpider|Mastodon|BlueSky' THEN
         SET NEW.is_bot = 1;
     ELSE
         SET NEW.is_bot = 0;
@@ -17,11 +17,11 @@ END; //
 DELIMITER ;
 
 UPDATE accesslog SET is_bot = 1
-    WHERE useragent REGEXP 'SemrushBot|Googlebot|Bytespider|Baiduspider|bingbot|GPTBot|Amazonbot|facebookexternalhit|Twitterbot|applebot|trendictionbot|MJ12bot|serpstatbot|meta-externalagent|BacklinksExtendedBot|Discordbot|ImagesiftBot|LivelapBot|Gaisbot|Barkrowler|Slurp|YandexBot|AhrefsBot|DuckDuckBot|DotBot|Exabot|Slackbot|Mastodon|BlueSky'
+    WHERE useragent REGEXP 'SemrushBot|Googlebot|Bytespider|Baiduspider|bingbot|GPTBot|Amazonbot|facebookexternalhit|Twitterbot|applebot|trendictionbot|MJ12bot|serpstatbot|meta-externalagent|BacklinksExtendedBot|Discordbot|ImagesiftBot|LivelapBot|Gaisbot|Barkrowler|Slurp|YandexBot|AhrefsBot|DuckDuckBot|DotBot|Exabot|Slackbot|TikTokSpider|Mastodon|BlueSky'
       AND is_bot = 0;
 
 SELECT count(*) FROM accesslog
-    WHERE useragent NOT REGEXP 'SemrushBot|Googlebot|Bytespider|Baiduspider|bingbot|GPTBot|Amazonbot|facebookexternalhit|Twitterbot|applebot|trendictionbot|MJ12bot|serpstatbot|meta-externalagent|BacklinksExtendedBot|Discordbot|ImagesiftBot|LivelapBot|Gaisbot|Barkrowler|Slurp|YandexBot|AhrefsBot|DuckDuckBot|DotBot|Exabot|Slackbot|Mastodon|BlueSky'
+    WHERE useragent NOT REGEXP 'SemrushBot|Googlebot|Bytespider|Baiduspider|bingbot|GPTBot|Amazonbot|facebookexternalhit|Twitterbot|applebot|trendictionbot|MJ12bot|serpstatbot|meta-externalagent|BacklinksExtendedBot|Discordbot|ImagesiftBot|LivelapBot|Gaisbot|Barkrowler|Slurp|YandexBot|AhrefsBot|DuckDuckBot|DotBot|Exabot|Slackbot|TikTokSpider|Mastodon|BlueSky'
   AND is_bot = 0
   AND ts > '2024-01-01 00:00:00';
 -- ORDER BY ts DESC;
